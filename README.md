@@ -6,4 +6,4 @@ Create a random password by selecting the desired length and clicking the <stron
 Password</strong> button.
 <br>
 <br>
-<strong>Link to website:</strong> https://amoscaritola.github.io/RandomPasswordWebsite/
+<strong>Link to website:</strong> https://amoscaritola.github.io/Website-RandomPassword/
