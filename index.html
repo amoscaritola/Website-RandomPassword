@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="randomString.css">
+  </head>
+
+  <body>
+    <div class="jumbotron" align="center">
+      <h1 id="heading1">Generate a random password!</h1>
+    </div>
+
+    <div class="container" align="center">
+
+      <div id="outputDiv" class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary" type="button" id="copyBtn" onclick="copyString()">Copy</button>
+        </div>
+        <input id="passwordOutput" placeholder="Password will appear here" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+      </div>
+
+      <table class="table1">
+        <tr>
+          <td><input class="cb" type="checkbox" value="" id="upperCase"></td>
+          <td></td>
+          <td><label class="form-check-label" for="upperCase">Add Upper Case Letters</label></td>
+        </tr>
+        <tr>
+          <td><input class="cb" type="checkbox" value="" id="specialChar"></td>
+          <td></td>
+          <td><label class="form-check-label" for="specialChar">Add special characters</label></td>
+        </tr>
+        <tr>
+          <td><input class="cb" type="checkbox" value="" id="numbers"></td>
+          <td></td>
+          <td><label class="form-check-label" for="numbers">Add numbers</label></td>
+        </tr>
+      </table><br>
+
+<!-- Add number options for password length   -->
+      <div id="buttonBar1" class="input-group mb-3">
+        <select id="dropDown1" class="custom-select" aria-label="Example select with button addon">
+          <option selected>Password Length...</option>
+          <option>1</option>
+        </select>
+      </div>
+
+        <button class="btn btn-outline-secondary" type="button" id="genPassBtn">Generate Password</button>
+
+    </div> <!-- End Container -->
+
+  </body>
+  <!-- Script Links -->
+
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+
+  <script src="randomString.js"></script>
+
+</html>
