@@ -22,3 +22,4 @@
 .jumbotron {
   padding: @jumbotron-padding 0; /* changed */
   margin-bottom: @jumbotron-padding;
+}
