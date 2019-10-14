@@ -34,7 +34,7 @@ function stringGen(stringLength){
   if (specialIsChecked) {
     alphabet += specialChar;
   }
-  if (specialIsChecked) {
+  if (numbersIsChecked) {
     alphabet += addNumbers;
   }
 
