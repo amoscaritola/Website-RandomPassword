@@ -1,9 +1,19 @@
+// Enable pop-over
+$(function () {
+  $('[data-toggle="popover"]').popover()
+});
+
+// Hide pop over after 1 second
+$('#copyBtn').popover().click(function () {
+    setTimeout(function () {
+        $('#copyBtn').popover('hide');
+    }, 1000);
+});
 
 // Loop to set options for the password length
 for (var i = 2; i < 25; i++) {
   $("#dropDown1").append('<option>' + i + '</option>');
 }
-
 
 // Outputs a random string with length equal to input value
 function stringGen(stringLength){

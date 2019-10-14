@@ -19,7 +19,16 @@
   *overflow: hidden;
 }
 
-.jumbotron {
-  padding: @jumbotron-padding 0; /* changed */
-  margin-bottom: @jumbotron-padding;
+
+/* For mobile device */
+@media screen and (max-width: 481px){
+  .jumbotron {
+    height: 100px;
+  }
+  .jumbotron h1 {
+    font-size: 1.5em;
+  }
+  .jumbotron .container p {
+    font-size: 16px;
+  }
 }
