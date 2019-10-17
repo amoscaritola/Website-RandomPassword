@@ -36,6 +36,11 @@ function passwordLength(){
     return $("#dropDown1").val();
 }
 
+function secureMathRandom() {
+  // Divide a random UInt32 by the maximum value (2^32 -1) to get a result between 0 and 1
+  return window.crypto.getRandomValues(new Uint32Array(1))[0] / 4294967295;
+}
+
 // Matches the two strings to see if they share any characters in no particular order
 function compare_string_characters(string1, string2) {
 	for (let i = 0; i < string1.length; i++) {
@@ -95,7 +100,8 @@ function stringGen(stringLength){
       }
 
       for (var i = 0; i < stringLength; i++) {
-        var index = Math.floor(Math.random() * character_bucket.length);
+        // var index = Math.floor(Math.random() * character_bucket.length);
+        var index = Math.floor(secureMathRandom() * character_bucket.length);
         output += character_bucket[index];
       }
 
