@@ -10,6 +10,11 @@
   max-width: 350px;
 }
 
+#main_container {
+  background-image: linear-gradient(to bottom left, rgb(85, 96, 168), rgb(93, 176, 202));
+  padding-bottom: 100px;
+}
+
 .cb {
   width: 20px;
   height: 20px;
@@ -17,6 +22,11 @@
   margin:0;
   vertical-align: bottom;
   *overflow: hidden;
+}
+
+.table1 tr td {
+  padding-bottom: .5em;
+  color: white;
 }
 
 
@@ -32,3 +42,6 @@
     font-size: 16px;
   }
 }
+
+85 96 168
+93 176 202

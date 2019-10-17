@@ -1,3 +1,24 @@
+// global variables
+var alphabet = "abcdefghijklmnopqrstuvwxyz";
+var capital_alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var special_characters = "!#$%&";
+var add_numbers = "0123456789"
+
+var outputBox = document.getElementById("passwordOutput");
+var generateStringButton = document.getElementById('genPassBtn');
+
+// Loop to set options for the password length
+for (var i = 5; i < 25; i++) {
+  $("#dropDown1").append('<option>' + i + '</option>');
+}
+
+// Copy string to clipboard function
+function copyString() {
+  var copyText = document.getElementById("passwordOutput");
+  copyText.select();
+  document.execCommand("copy");
+}
+
 // Enable pop-over
 $(function () {
   $('[data-toggle="popover"]').popover()
@@ -10,21 +31,10 @@ $('#copyBtn').popover().click(function () {
     }, 1000);
 });
 
-// Loop to set options for the password length
-for (var i = 5; i < 25; i++) {
-  $("#dropDown1").append('<option>' + i + '</option>');
-}
-
 // Get dropdown value for length of string to generate
 function passwordLength(){
     return $("#dropDown1").val();
 }
-
-// global variables
-var alphabet = "abcdefghijklmnopqrstuvwxyz";
-var capital_alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var special_characters = "!#$%&";
-var add_numbers = "123456789"
 
 // Matches the two strings to see if they share any characters in no particular order
 function compare_string_characters(string1, string2) {
@@ -44,32 +54,44 @@ function compare_string_characters(string1, string2) {
 // Outputs a random string with length equal to input value
 function stringGen(stringLength){
   //Check if boxes are checked off
+  var lower_checked = $("#lowerCase").prop('checked');
   var upper_checked = $("#upperCase").prop('checked');
   var special_checked = $("#specialChar").prop('checked');
   var number_checked = $("#numbers").prop('checked');
 
   var character_bucket = "";
-  character_bucket += alphabet;
+  var options_checked_count = 0;
 
+  if (lower_checked) {
+    character_bucket += alphabet;
+    options_checked_count += 1
+  }
   if (upper_checked) {
     character_bucket += capital_alphabet;
+    options_checked_count += 1
   }
   if (special_checked) {
     character_bucket += special_characters;
+    options_checked_count += 1
   }
   if (number_checked) {
     character_bucket += add_numbers;
+    options_checked_count += 1
+  }
+
+  if (options_checked_count === 0) {
+    return "Please check at least one option"
   }
 
   var attempts = 0
 
   while (true) {
-      var output = ""
+      var output = "";
       attempts += 1
 
       //prevent infinite loops by limiting reshuffle to 100 tries
-      if (attempts > 100 ) {
-        return "Please try again"
+      if (attempts > 500 ) {
+        return "Please try again";
       }
 
       for (var i = 0; i < stringLength; i++) {
@@ -77,35 +99,40 @@ function stringGen(stringLength){
         output += character_bucket[index];
       }
 
-      if (!compare_string_characters(alphabet, output)) {
-        console.log("lower case not found.. retrying");
-        continue;
-      }
-      //Check if uppercase is active and in string
-      if (upper_checked && !compare_string_characters(capital_alphabet, output)) {
-        console.log("No capital found.. reshuffling");
-        continue;
+      var lc_in_string = compare_string_characters(alphabet, output);
+      var uc_in_string = compare_string_characters(capital_alphabet, output);
+      var sp_in_string = compare_string_characters(special_characters, output);
+      var num_in_string = compare_string_characters(add_numbers, output);
+
+      if (lower_checked) {
+        if (!lc_in_string) {
+          continue;
+        }
       }
 
-      if (special_checked && !compare_string_characters(special_characters, output)) {
-        console.log("No special found.. reshuffling");
-        continue;
+      if (upper_checked) {
+        if (!uc_in_string) {
+          continue;
+        }
       }
 
-      if (number_checked && !compare_string_characters(add_numbers, output)) {
-        console.log("No numbers found.. reshuffling");
-        continue;
+      if (special_checked) {
+        if (!sp_in_string) {
+          continue;
+        }
+      }
+
+      if (number_checked) {
+        if (!num_in_string) {
+          continue;
+        }
       }
 
       break;
+
   }
-
   return output;
-
 }
-
-var outputBox = document.getElementById("passwordOutput");
-var generateStringButton = document.getElementById('genPassBtn');
 
 // Button to generate string and pass it to outputBox
 generateStringButton.addEventListener('click',function(){
@@ -115,11 +142,4 @@ generateStringButton.addEventListener('click',function(){
     outputBox.value = stringGen(passwordLength());
     console.log("Generated random string");
   }
-})
-
-// Copy string to clipboard function
-function copyString() {
-  var copyText = document.getElementById("passwordOutput");
-  copyText.select();
-  document.execCommand("copy");
-}
+});

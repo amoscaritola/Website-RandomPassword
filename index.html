@@ -9,34 +9,39 @@
   </head>
 
   <body>
-    <div class="container" align="center">
+    <div id="main_container" class="container rounded shadow" align="center">
 
-      <div class="jumbotron jumbotron-fluid rounded" align="center">
+      <div class="jumbotron jumbotron-fluid rounded shadow" align="center">
         <h1 id="heading1">Generate a random password!</h1>
       </div>
 
       <div id="outputDiv" class="input-group mb-3">
         <div class="input-group-prepend">
-          <button class="btn btn-outline-secondary" type="button" id="copyBtn" data-content="Copied!" data-container="body" data-toggle="popover" data-placement="top" onclick="copyString()">Copy</button>
+          <button class="btn btn-outline-light" type="button" id="copyBtn" data-content="Copied!" data-container="body" data-toggle="popover" data-placement="top" onclick="copyString()">Copy</button>
         </div>
         <input id="passwordOutput" placeholder="Password will appear here" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
       </div>
 
       <table class="table1">
         <tr>
+          <td><input class="cb" type="checkbox" value="" id="lowerCase"></td>
+          <td></td>
+          <td><label class="form-check-label" for="lowerCase">Include lower case letters</label></td>
+        </tr>
+        <tr>
           <td><input class="cb" type="checkbox" value="" id="upperCase"></td>
           <td></td>
-          <td><label class="form-check-label" for="upperCase">Add Upper Case Letters</label></td>
+          <td><label class="form-check-label" for="upperCase">Include upper case letters</label></td>
         </tr>
         <tr>
           <td><input class="cb" type="checkbox" value="" id="specialChar"></td>
           <td></td>
-          <td><label class="form-check-label" for="specialChar">Add special characters</label></td>
+          <td><label class="form-check-label" for="specialChar">Include special characters</label></td>
         </tr>
         <tr>
           <td><input class="cb" type="checkbox" value="" id="numbers"></td>
           <td></td>
-          <td><label class="form-check-label" for="numbers">Add numbers</label></td>
+          <td><label class="form-check-label" for="numbers">Include numbers</label></td>
         </tr>
       </table><br>
 
@@ -48,8 +53,7 @@
         </select>
       </div>
 
-        <button class="btn btn-outline-secondary" type="button" id="genPassBtn">Generate Password</button>
-
+        <button class="btn btn-outline-light" type="button" id="genPassBtn">Generate Password</button>
     </div> <!-- End Container -->
 
   </body>
